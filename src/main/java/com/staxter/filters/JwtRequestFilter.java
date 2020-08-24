@@ -35,14 +35,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String username = null;
         String jwt = null;
         String userId = null;
-        String userPassword =null;
+        String userPassword = null;
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
             final Claims claims = jwtUtil.extractAllClaims(jwt);
-            userId = (String)claims.getSubject();
-            username = (String)claims.get("userId");
-            userPassword = (String)claims.get("userPassword");
+            userId = (String) claims.getSubject();
+            username = (String) claims.get("userId");
+            userPassword = (String) claims.get("userPassword");
         }
         if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userId);

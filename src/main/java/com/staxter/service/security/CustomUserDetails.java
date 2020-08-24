@@ -22,12 +22,12 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@Log4j2
 public class CustomUserDetails implements UserDetails {
 
     private String userName;
-    public CustomUserDetails(String userName){
-        this.userName=userName;
+
+    public CustomUserDetails(String userName) {
+        this.userName = userName;
     }
 
     public void setUser(UserDto user) {
@@ -38,8 +38,8 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-       return user.getRoles().stream().map(userRoles -> new SimpleGrantedAuthority(userRoles)).collect(Collectors.toList());
-        
+        return user.getRoles().stream().map(userRoles -> new SimpleGrantedAuthority(userRoles)).collect(Collectors.toList());
+
     }
 
     @Override

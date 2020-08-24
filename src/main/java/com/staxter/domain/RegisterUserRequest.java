@@ -19,9 +19,5 @@ public class RegisterUserRequest {
     private String lastName;
     private String userName;
     private String password;
-    @JsonIgnore
-    private String plainTextPassword;
-    @JsonIgnore
-    private String hashedPassword;
     private Collection<String> roles;
 }
